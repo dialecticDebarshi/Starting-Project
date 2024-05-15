@@ -19,7 +19,7 @@ namespace Starting_Project.Controllers
 			_repository = QuestionRepository;
 
 		}
-		[HttpGet("{id}")]
+		[HttpGet("GetQuestion/{id}")]
 		public async Task<IActionResult> GetQuestion(string id)
 		{
 			var question = await _repository.GetQuestion(id);
@@ -30,13 +30,13 @@ namespace Starting_Project.Controllers
 			return Ok(question);
 		}
 
-		[HttpGet]
+		[HttpGet("GetQuestions")]
 		public async Task<IActionResult> GetQuestions()
 		{
 			var questions = await _repository.GetQuestions();
 			return Ok(questions);
 		}
-		[HttpPost]
+		[HttpPost("CreateQuestion")]
 		public async Task<IActionResult> CreateQuestion([FromBody] QuestionDto questionDto)
 		{
 			if (questionDto == null)
@@ -48,7 +48,8 @@ namespace Starting_Project.Controllers
 			return CreatedAtAction(nameof(GetQuestion), new { id = createdQuestion.Id }, createdQuestion);
 		}
 
-		[HttpPut("{id}")]
+		[HttpPut("UpdateQuestion/{id}")]
+		
 		public async Task<IActionResult> UpdateQuestion(string id, [FromBody] QuestionDto questionDto)
 		{
 			var existingQuestion = await _repository.GetQuestion(id);
@@ -61,7 +62,7 @@ namespace Starting_Project.Controllers
 			return Ok(updatedQuestion);
 		}
 
-		[HttpDelete("{id}")]
+		[HttpDelete("DeleteQuestion/{id}")]
 		public async Task<IActionResult> DeleteQuestion(string id)
 		{
 			var existingQuestion = await _repository.GetQuestion(id);

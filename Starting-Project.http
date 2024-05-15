@@ -1,6 +1,6 @@
 @Starting_Project_HostAddress = http://localhost:5289
 
-GET {{Starting_Project_HostAddress}}/weatherforecast/
+GET {{Starting_Project_HostAddress}}/Home/
 Accept: application/json
 
 ###
